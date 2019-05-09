@@ -21,7 +21,7 @@ class ForrestServiceProvider extends BaseServiceProvider
 
     protected function getClient()
     {
-        return new Client(['http_errors' => true]);
+        return new Client( config('forrest.guzzleOptions') );
     }
 
     protected function getRedirect()

@@ -10,6 +10,10 @@ return [
      */
     'authentication' => 'WebServer',
 
+    'guzzleOptions' => [
+            'http_errors' => true,
+        ],
+
     /*
      * Enter your credentials
      * Username and Password are only necessary for UserPassword flow.
