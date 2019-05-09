@@ -788,7 +788,7 @@ abstract class Client
         if ($ex->hasResponse() && $ex->getResponse()->getStatusCode() == 401) {
             throw new TokenExpiredException('Salesforce token has expired', $ex);
         } elseif ($ex->hasResponse()) {
-            if ( $ex->getResponse()->getStatusCode() == 403 && 'Bad_OAuth_Token' == (string)$ex->getResponse()->getBody() ) {
+            if ( 403 == $ex->getResponse()->getStatusCode() && 'Bad_OAuth_Token' === (string)$ex->getResponse()->getBody() ) {
                throw new TokenExpiredException('Salesforce token has expired', $ex);
             }
             throw new SalesforceException('Salesforce response error', $ex);
