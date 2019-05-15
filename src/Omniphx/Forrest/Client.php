@@ -207,6 +207,14 @@ abstract class Client
     }
 
     /**
+     * Indicate token exists
+     * @return boolean
+     */
+    public function hasToken() {
+        return $this->tokenRepo->has();
+    }
+
+    /**
      * GET method call using any custom path.
      *
      * @param string $path
@@ -400,7 +408,7 @@ abstract class Client
     public function describe($object_name = null, $options = [])
     {
         $url = sprintf('%s/sobjects', $this->getBaseUrl());
-        
+
         if ( ! empty($object_name)) {
             $url .= sprintf('/%s/describe', $object_name);
         }
