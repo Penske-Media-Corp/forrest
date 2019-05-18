@@ -196,8 +196,11 @@ abstract class Client
         try {
             $response = $this->httpClient->request($this->options['method'], $this->url, $this->parameters);
         } catch (RequestException $ex) {
+            unset( $this->parameters['body'] );
             $this->assignExceptions($ex);
         }
+
+        unset( $this->parameters['body'] );
 
         $formattedResponse = $this->formatter->formatResponse($response);
 
